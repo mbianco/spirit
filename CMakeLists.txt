@@ -10,10 +10,10 @@ project(boost_spirit VERSION "${BOOST_SUPERPROJECT_VERSION}" LANGUAGES CXX)
 add_library(boost_spirit INTERFACE)
 add_library(Boost::spirit ALIAS boost_spirit)
 
-target_include_directories(boost_spirit INTERFACE include)
+target_include_directories(boost_spirit PUBLIC INTERFACE include)
 
 target_link_libraries(boost_spirit
-  INTERFACE
+  PUBLIC INTERFACE
     Boost::array
     Boost::assert
     Boost::config
@@ -51,3 +51,5 @@ if(BUILD_TESTING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/test/CMakeLists.txt")
 
 endif()
 
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include/
+        )
